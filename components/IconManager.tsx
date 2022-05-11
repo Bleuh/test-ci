@@ -101,7 +101,8 @@ const iconList: iconOptions = {
     dateRange: "date_range",
     expandLess: "expand_less",
     accountCircle: "account_circle",
-    category: "category"
+    category: "category",
+    test: "test",
 }
 
 export const getIcon = (iconName: string, style?: React.CSSProperties, className?: string) =>
