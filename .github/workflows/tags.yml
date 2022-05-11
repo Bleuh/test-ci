@@ -12,7 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: "finnp/create-file-action@master"
+        env:
+          FILE_NAME: "fileName.txt"
+          FILE_DATA: "file content"
       - uses: actions-ecosystem/action-get-latest-tag@v1
         id: get-latest-tag
-      - name: Use tag
-        run: echo ${{ steps.get-latest-tag.outputs.tag }}
+      - name: Push bundle on tag ${{ steps.get-latest-tag.outputs.tag }}
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: Rollup robot
+          tag: '${{ steps.get-latest-tag.outputs.tag }}'
