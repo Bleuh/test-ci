@@ -10,6 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Merge main -> release
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: main
+          target_branch: release
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v3
       - name: Use Node.js 16
         uses: actions/setup-node@v3
@@ -25,4 +32,3 @@ jobs:
         with:
           author_name: Rollup robot
           new_branch: 'release'
-          pull: 'origin main'
