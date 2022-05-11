@@ -1,11 +1,9 @@
 name: Test workflow
 
-# Only trigger, when the build workflow succeeded
 on:
-  workflow_run:
-    workflows: ["Create Tag"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
 
 jobs:
   test-tag:
@@ -16,10 +14,8 @@ jobs:
         env:
           FILE_NAME: "fileName.txt"
           FILE_DATA: "file content"
-      - uses: actions-ecosystem/action-get-latest-tag@v1
-        id: get-latest-tag
-      - name: Push bundle on tag ${{ steps.get-latest-tag.outputs.tag }}
+      - name: Push bundle on release
         uses: EndBug/add-and-commit@v9
         with:
           author_name: Rollup robot
-          new_branch: '${{ steps.get-latest-tag.outputs.tag }}'
+          new_branch: 'release'
