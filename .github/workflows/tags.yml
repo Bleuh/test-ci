@@ -1,0 +1,16 @@
+name: Test workflow
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  test-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get tag
+        id: tag
+        uses: dawidd6/action-get-tag@v1
+      - name: Use tag
+        run: echo ${{steps.tag.outputs.tag}}
