@@ -10,13 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Merge develop -> main
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          from_branch: develop
-          target_branch: main
-          github_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v3
       - name: Use Node.js 16
         uses: actions/setup-node@v3
@@ -33,6 +26,13 @@ jobs:
           author_name: Rollup robot
           pull: 'origin main'
           new_branch: 'main'
+      - name: Merge develop -> main
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: develop
+          target_branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: Klemensas/action-autotag@stable
         with:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
