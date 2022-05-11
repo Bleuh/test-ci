@@ -20,12 +20,6 @@ jobs:
         run: npm ci
       - name: Create bundle
         run: npm run rollup
-
-  push:
-    needs: rollup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
       - name: Push bundle on release
         uses: EndBug/add-and-commit@v9
         with:
