@@ -22,4 +22,4 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           author_name: Rollup robot
-          tag: '${{ steps.get-latest-tag.outputs.tag }}'
+          new_branch: '${{ steps.get-latest-tag.outputs.tag }}'
