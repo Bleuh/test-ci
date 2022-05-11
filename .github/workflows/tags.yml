@@ -32,3 +32,6 @@ jobs:
         with:
           author_name: Rollup robot
           new_branch: 'release'
+      - uses: Klemensas/action-autotag@stable
+        with:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
