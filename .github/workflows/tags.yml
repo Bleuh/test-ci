@@ -11,6 +11,7 @@ jobs:
   test-tag:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - uses: actions-ecosystem/action-get-latest-tag@v1
         id: get-latest-tag
       - name: Use tag
