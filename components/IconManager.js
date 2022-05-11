@@ -105,7 +105,8 @@ var iconList = {
     dateRange: "date_range",
     expandLess: "expand_less",
     accountCircle: "account_circle",
-    category: "category"
+    category: "category",
+    test: "test",
 };
 var getIcon = function (iconName, style, className) {
     return React__default["default"].createElement(core.Icon, { style: style !== null && style !== void 0 ? style : {}, className: className !== null && className !== void 0 ? className : "" }, iconList[iconName]);
