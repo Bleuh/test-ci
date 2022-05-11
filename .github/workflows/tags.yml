@@ -25,4 +25,4 @@ jobs:
         with:
           author_name: Rollup robot
           new_branch: 'release'
-          pull: '--rebase'
+          pull: 'origin main --rebase'
