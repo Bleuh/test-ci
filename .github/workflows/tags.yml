@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Merge main -> release
+      - name: Merge develop -> main
         uses: devmasx/merge-branch@master
         with:
           type: now
@@ -31,6 +31,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           author_name: Rollup robot
+          pull: 'origin main'
           new_branch: 'main'
       - uses: Klemensas/action-autotag@stable
         with:
