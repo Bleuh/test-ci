@@ -1,16 +1,17 @@
 name: Test workflow
 
+# Only trigger, when the build workflow succeeded
 on:
-  push:
-    tags:
-      - '*'
+  workflow_run:
+    workflows: ["Create Tag"]
+    types:
+      - completed
 
 jobs:
   test-tag:
     runs-on: ubuntu-latest
     steps:
-      - name: Get tag
-        id: tag
-        uses: dawidd6/action-get-tag@v1
+      - uses: actions-ecosystem/action-get-latest-tag@v1
+        id: get-latest-tag
       - name: Use tag
-        run: echo ${{steps.tag.outputs.tag}}
+        run: echo ${{ steps.get-latest-tag.outputs.tag }}
