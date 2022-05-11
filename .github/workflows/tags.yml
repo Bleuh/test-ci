@@ -3,7 +3,7 @@ name: Test workflow
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   rollup:
@@ -14,8 +14,8 @@ jobs:
         uses: devmasx/merge-branch@master
         with:
           type: now
-          from_branch: main
-          target_branch: release
+          from_branch: develop
+          target_branch: main
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v3
       - name: Use Node.js 16
@@ -31,7 +31,7 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           author_name: Rollup robot
-          new_branch: 'release'
+          new_branch: 'main'
       - uses: Klemensas/action-autotag@stable
         with:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
