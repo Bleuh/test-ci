@@ -18,6 +18,8 @@ jobs:
           target_branch: main
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v3
+        with:
+          ref: "main"
       - name: Use Node.js 16
         uses: actions/setup-node@v3
         with:
@@ -31,7 +33,6 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           author_name: Rollup robot
-          pull: 'origin main'
           new_branch: 'main'
       - uses: Klemensas/action-autotag@stable
         with:
